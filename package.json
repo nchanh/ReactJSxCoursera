@@ -1,0 +1,23 @@
+{
+  "name": "coursera",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nchanh/ReactJSxCoursera.git"
+  },
+  "author": "Nguyen Chanh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nchanh/ReactJSxCoursera/issues"
+  },
+  "homepage": "https://github.com/nchanh/ReactJSxCoursera#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
