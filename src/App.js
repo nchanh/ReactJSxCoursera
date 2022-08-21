@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { Navbar, NavbarBrand } from 'reactstrap';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar className="my-2" color="dark" dark>
+        <NavbarBrand href="/">
+          <img
+            alt="logo"
+            src={logo}
+            style={{
+              height: 40,
+              width: 40,
+            }}
+          />
+          Reactstrap
+        </NavbarBrand>
+      </Navbar>
     </div>
   );
 }
