@@ -1,29 +1,61 @@
-import { Media } from 'reactstrap';
+import { useEffect, useState } from 'react';
+import {
+  Card,
+  CardBody,
+  CardImg,
+  CardImgOverlay,
+  CardText,
+  CardTitle,
+} from 'reactstrap';
 
 function Menu(props) {
-  console.log(props);
+  const [dishes, setDishes] = useState([]);
+  const [dishDetail, setDishDetail] = useState({});
+  useEffect(() => {
+    setDishes(props.dishes);
 
-  const _dishes = props.dishes;
-  const menu = _dishes.map((dish) => (
-    <div key={dish.id} className="col-12 mt-5">
-      <Media tag="li">
-        <div className="row">
-          <div className="col-2">
-            <Media object src={dish.image} alt={dish.name} />
-          </div>
-          <div className="col-10 text-center">
-            <Media heading>{dish.name}</Media>
-            <p>{dish.description}</p>
-          </div>
-        </div>
-      </Media>
-    </div>
-  ));
+    return () => {
+      setDishes([]);
+    };
+  }, [props.dishes]);
+
+  const handleClickDish = (dish) => {
+    setDishDetail(dish);
+  };
+
+  const menu =
+    dishes.length > 0 &&
+    dishes.map((dish) => (
+      <div key={dish.id} className="col-12 col-lg-12 col-md-6 mt-5">
+        <Card onClick={() => handleClickDish(dish)}>
+          <CardImg width="100%" src={dish.image} alt={dish.name} />
+          <CardImgOverlay>
+            <CardTitle>{dish.name}</CardTitle>
+          </CardImgOverlay>
+        </Card>
+      </div>
+    ));
+
+  const renderDish = () => {
+    return (
+      Object.entries(dishDetail).length !== 0 && (
+        <Card>
+          <CardImg top src={dishDetail.image} alt={dishDetail.name} />
+          <CardBody>
+            <CardTitle>{dishDetail.name}</CardTitle>
+            <CardText>{dishDetail.description}</CardText>
+          </CardBody>
+        </Card>
+      )
+    );
+  };
 
   return (
     <div className="container">
+      <div className="row">{menu}</div>
+
       <div className="row">
-        <Media list>{menu}</Media>
+        <div className="col-12 m-1">{renderDish()}</div>
       </div>
     </div>
   );
