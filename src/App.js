@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import { Navbar, NavbarBrand } from 'reactstrap';
+import Menu from './components/Menu';
+import { useEffect, useState } from 'react';
+import { DISHES } from './shared/dishes';
 
 function App() {
+  const [dishes, setDishes] = useState([]);
+
+  useEffect(() => {
+    setDishes(DISHES);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar className="my-2" color="dark" dark>
+        <NavbarBrand href="/">
+          <img
+            alt="logo"
+            src={logo}
+            style={{
+              height: 40,
+              width: 40,
+            }}
+          />
+          Reactstrap
+        </NavbarBrand>
+      </Navbar>
+      {dishes.length > 0 && <Menu dishes={dishes} />}
     </div>
   );
 }
